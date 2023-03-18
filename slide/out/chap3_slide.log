@@ -1,10 +1,10 @@
-This is e-upTeX, Version 3.141592653-p4.0.0-u1.28-220214-2.6 (utf8.uptex) (TeX Live 2022) (preloaded format=uplatex 2022.12.17)  18 MAR 2023 21:01
+This is e-upTeX, Version 3.141592653-p4.0.0-u1.28-220214-2.6 (utf8.uptex) (TeX Live 2022) (preloaded format=uplatex 2022.12.17)  18 MAR 2023 21:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/flutcla/projects/idris2/slide/chap3_slide.tex -halt-on-error -synctex=1
-(/Users/flutcla/projects/idris2/slide/chap3_slide.tex
+**/Users/flutcla/projects/tapl/slide/chap3_slide.tex -halt-on-error -synctex=1
+(/Users/flutcla/projects/tapl/slide/chap3_slide.tex
 pLaTeX2e <2021-11-15u04> (based on LaTeX2e <2021-11-15> patch level 1)
 L3 programming layer <2022-02-24> (/usr/local/texlive/2022/texmf-dist/tex/latex/beamer/beamer.cls
 Document Class: beamer 2022/02/08 v3.66 A class for typesetting presentations
@@ -747,17 +747,31 @@ Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
 
 Package beamerthememetropolis Warning: You need to compile with XeLaTeX or LuaLaTeX to use the Fira fonts on input line 95.
 
-)) (./chap3_title.tex) (/usr/local/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-dvipdfmx.def
+)) (/usr/local/texlive/2022/texmf-dist/tex/latex/pgf/utilities/pgfpages.sty
+Package: pgfpages 2011/01/05 ver 0.02
+\pgf@logicalpages=\count356
+\pgf@firstshipout=\count357
+\pgf@lastshipout=\count358
+\pgf@currentshipout=\count359
+\pgf@cpn=\count360
+\pgf@shipoutnextto=\count361
+\pgfphysicalheight=\dimen355
+\pgfphysicalwidth=\dimen356
+\pgfpages@shipoutbox=\box111
+)
+\pgfpages@box@1=\box112
+\pgfpages@box@2=\box113
+ (./chap3_title.tex) (/usr/local/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-dvipdfmx.def
 File: l3backend-dvipdfmx.def 2022-02-07 L3 backend support: dvipdfmx
  (|extractbb --version)
-\c__kernel_sys_dvipdfmx_version_int=\count356
-\l__color_backend_stack_int=\count357
-\g__color_backend_stack_int=\count358
-\g__graphics_track_int=\count359
-\l__pdf_internal_box=\box111
-\g__pdf_backend_object_int=\count360
-\g__pdf_backend_annotation_int=\count361
-\g__pdf_backend_link_int=\count362
+\c__kernel_sys_dvipdfmx_version_int=\count362
+\l__color_backend_stack_int=\count363
+\g__color_backend_stack_int=\count364
+\g__graphics_track_int=\count365
+\l__pdf_internal_box=\box114
+\g__pdf_backend_object_int=\count366
+\g__pdf_backend_annotation_int=\count367
+\g__pdf_backend_link_int=\count368
 ) (out/chap3_slide.aux)
 \openout1 = `chap3_slide.aux'.
 
@@ -825,7 +839,7 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (/usr/local/texlive/2022/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count363
+\c@section@level=\count369
 )
 LaTeX Info: Redefining \ref on input line 55.
 LaTeX Info: Redefining \pageref on input line 55.
@@ -847,7 +861,7 @@ Dictionary: translator-numbers-dictionary, Language: English
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/translator/translator-theorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-\c@lstlisting=\count364
+\c@lstlisting=\count370
  (out/chap3_slide.nav)
 LaTeX Font Info:    Font shape `JT2/mc/m/n' will be
 (Font)              scaled to size 5.77332pt on input line 55.
@@ -881,9 +895,7 @@ LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
 Overfull \vbox (16.67491pt too high) detected at line 56
  []
 
-[1
-
-] (./chap3.tex
+(./chap3.tex
 LaTeX Font Info:    Trying to load font information for U+msa on input line 5.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -899,6 +911,7 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 LaTeX Font Info:    Trying to load font information for U+stmry on input line 5.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/stmaryrd/Ustmry.fd) [2
 
+
 ]
 LaTeX Font Info:    Font shape `JT2/mc/bx/n' in size <14.4> not available
 (Font)              Font shape `JT2/gt/m/n' tried instead on input line 7.
@@ -909,6 +922,7 @@ LaTeX Font Info:    Font shape `JY2/mc/bx/n' in size <14.4> not available
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
 (Font)              scaled to size 13.85594pt on input line 7.
  [3
+
 
 ]
 \openout4 = `chap3_slide.vrb'.
@@ -927,170 +941,213 @@ LaTeX Font Info:    Font shape `JY2/mc/m/n' will be
 (Font)              scaled to size 3.84888pt on input line 31.
  [4
 
+
 ]
+LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
+(Font)              scaled to size 10.53629pt on input line 31.
+LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
+(Font)              scaled to size 10.53629pt on input line 31.
+LaTeX Font Info:    Kanji font shape `JY2/mc/m/it' undefined
+(Font)              No change on input line 31.
+LaTeX Font Info:    Kanji font shape `JY2/mc/m/it' undefined
+(Font)              No change on input line 31.
+LaTeX Font Info:    Kanji font shape `JY2/mc/m/it' undefined
+(Font)              No change on input line 31.
 \openout4 = `chap3_slide.vrb'.
 
  (out/chap3_slide.vrb
 LaTeX Font Info:    Kanji font shape `JY2/mc/m/it' undefined
-(Font)              No change on input line 16.
+(Font)              No change on input line 9.
 ) [5
+
 
 ] [6
 
+
 ]
-LaTeX Font Info:    Trying to load font information for TS1+cmss on input line 59.
+LaTeX Font Info:    Trying to load font information for TS1+cmss on input line 53.
  (/usr/local/texlive/2022/texmf-dist/tex/latex/base/ts1cmss.fd
 File: ts1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 ) [7
 
+
 ]
 LaTeX Font Info:    Font shape `JT2/mc/bx/n' in size <12> not available
-(Font)              Font shape `JT2/gt/m/n' tried instead on input line 75.
+(Font)              Font shape `JT2/gt/m/n' tried instead on input line 69.
 LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
-(Font)              scaled to size 11.54663pt on input line 75.
+(Font)              scaled to size 11.54663pt on input line 69.
 LaTeX Font Info:    Font shape `JY2/mc/bx/n' in size <12> not available
-(Font)              Font shape `JY2/gt/m/n' tried instead on input line 75.
+(Font)              Font shape `JY2/gt/m/n' tried instead on input line 69.
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 11.54663pt on input line 75.
+(Font)              scaled to size 11.54663pt on input line 69.
 LaTeX Font Info:    Kanji font shape `JY2/mc/m/it' undefined
-(Font)              No change on input line 75.
+(Font)              No change on input line 69.
  [8
 
+
 ]
 LaTeX Font Info:    Kanji font shape `JY2/mc/m/it' undefined
-(Font)              No change on input line 97.
+(Font)              No change on input line 91.
  [9
 
-] [10
-
-] [11
 
 ]
-Overfull \vbox (40.42236pt too high) detected at line 132
+LaTeX Font Info:    Kanji font shape `JY2/mc/m/it' undefined
+(Font)              No change on input line 91.
+LaTeX Font Info:    Kanji font shape `JY2/mc/m/it' undefined
+(Font)              No change on input line 91.
+ [10
+
+
+]
+LaTeX Font Info:    Kanji font shape `JY2/mc/m/it' undefined
+(Font)              No change on input line 108.
+ [11
+
+
+]
+Overfull \vbox (40.42236pt too high) detected at line 126
  []
 
 [12
 
+
 ] [13
+
 
 ] [14
 
+
 ] [15
+
 
 ] [16
 
+
 ] [17
+
 
 ]
 LaTeX Font Info:    Kanji font shape `JY2/mc/m/it' undefined
-(Font)              No change on input line 159.
+(Font)              No change on input line 153.
  [18
+
 
 ] [19
 
+
 ]
 LaTeX Font Info:    Kanji font shape `JY2/mc/m/it' undefined
-(Font)              No change on input line 175.
+(Font)              No change on input line 169.
 LaTeX Font Info:    Kanji font shape `JY2/mc/m/it' undefined
-(Font)              No change on input line 175.
+(Font)              No change on input line 169.
 LaTeX Font Info:    Kanji font shape `JY2/mc/m/it' undefined
-(Font)              No change on input line 175.
+(Font)              No change on input line 169.
 LaTeX Font Info:    Kanji font shape `JY2/mc/m/it' undefined
-(Font)              No change on input line 175.
+(Font)              No change on input line 169.
  [20
+
 
 ]
 LaTeX Font Info:    Font shape `JT2/gt/bx/n' in size <14.4> not available
-(Font)              Font shape `JT2/gt/m/n' tried instead on input line 189.
+(Font)              Font shape `JT2/gt/m/n' tried instead on input line 183.
 LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
-(Font)              scaled to size 13.85594pt on input line 189.
+(Font)              scaled to size 13.85594pt on input line 183.
 LaTeX Font Info:    Font shape `JY2/gt/bx/n' in size <14.4> not available
-(Font)              Font shape `JY2/gt/m/n' tried instead on input line 189.
+(Font)              Font shape `JY2/gt/m/n' tried instead on input line 183.
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 13.85594pt on input line 189.
+(Font)              scaled to size 13.85594pt on input line 183.
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 189.
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 183.
 
-Overfull \vbox (0.2477pt too high) detected at line 189
+Overfull \vbox (0.2477pt too high) detected at line 183
  []
 
 [21
 
+
 ]
 LaTeX Font Info:    Font shape `JT2/gt/bx/n' in size <12> not available
-(Font)              Font shape `JT2/gt/m/n' tried instead on input line 204.
+(Font)              Font shape `JT2/gt/m/n' tried instead on input line 198.
 LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
-(Font)              scaled to size 11.54663pt on input line 204.
+(Font)              scaled to size 11.54663pt on input line 198.
 LaTeX Font Info:    Font shape `JY2/gt/bx/n' in size <12> not available
-(Font)              Font shape `JY2/gt/m/n' tried instead on input line 204.
+(Font)              Font shape `JY2/gt/m/n' tried instead on input line 198.
 LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 11.54663pt on input line 204.
+(Font)              scaled to size 11.54663pt on input line 198.
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 204.
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 198.
 
-Overfull \vbox (0.2477pt too high) detected at line 204
+Overfull \vbox (0.2477pt too high) detected at line 198
  []
 
 [22
 
+
 ]
-Overfull \vbox (0.2477pt too high) detected at line 219
+Overfull \vbox (0.2477pt too high) detected at line 213
  []
 
 [23
 
+
 ]
 LaTeX Font Info:    Kanji font shape `JY2/mc/m/it' undefined
-(Font)              No change on input line 249.
+(Font)              No change on input line 243.
  [24
 
+
 ]
 LaTeX Font Info:    Kanji font shape `JY2/mc/m/it' undefined
-(Font)              No change on input line 249.
+(Font)              No change on input line 243.
  [25
 
+
 ]
 LaTeX Font Info:    Kanji font shape `JY2/mc/m/it' undefined
-(Font)              No change on input line 249.
-LaTeX Font Info:    Font shape `JT2/gt/m/n' will be
-(Font)              scaled to size 10.53629pt on input line 249.
-LaTeX Font Info:    Font shape `JY2/gt/m/n' will be
-(Font)              scaled to size 10.53629pt on input line 249.
+(Font)              No change on input line 243.
 
-Overfull \vbox (28.00433pt too high) detected at line 249
+Overfull \vbox (28.00433pt too high) detected at line 243
  []
 
 [26
 
+
 ]
 LaTeX Font Info:    Kanji font shape `JY2/mc/m/it' undefined
-(Font)              No change on input line 266.
+(Font)              No change on input line 260.
  [27
+
 
 ] [28
 
+
 ] [29
+
 
 ] [30
 
+
 ] [31
+
 
 ] [32
 
+
 ] [33
+
 
 ]
 LaTeX Font Info:    Kanji font shape `JY2/mc/m/it' undefined
-(Font)              No change on input line 327.
+(Font)              No change on input line 321.
  [34
+
 
 ] [35
 
-]
-Overfull \vbox (11.37822pt too high) detected at line 350
- []
 
-[36
+] [36
+
 
 ])
 \tf@nav=\write7
@@ -1102,17 +1159,20 @@ Overfull \vbox (11.37822pt too high) detected at line 350
 \tf@snm=\write9
 \openout9 = `chap3_slide.snm'.
 
- (out/chap3_slide.aux)
+ [37
+
+
+] (out/chap3_slide.aux)
 Package rerunfilecheck Info: File `chap3_slide.out' has not changed.
 (rerunfilecheck)             Checksum: FBF1D2A3ACAEDC1E4023F02E967E8C3B;852.
  ) 
 Here is how much of TeX's memory you used:
- 28555 strings out of 478716
- 565446 string characters out of 5858224
- 812021 words of memory out of 5000000
- 46370 multiletter control sequences out of 15000+600000
- 534957 words of font info for 174 fonts, out of 8000000 for 9000
+ 28750 strings out of 478716
+ 570938 string characters out of 5858224
+ 826753 words of memory out of 5000000
+ 46560 multiletter control sequences out of 15000+600000
+ 535658 words of font info for 176 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 99i,19n,104p,1917b,1134s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,19n,104p,1915b,1134s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on out/chap3_slide.dvi (36 pages, 109168 bytes).
+Output written on out/chap3_slide.dvi (36 pages, 161352 bytes).
