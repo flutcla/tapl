@@ -1,0 +1,33 @@
+\usepackage{minijs}
+\usepackage{mathrsfs}
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{mathtools}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{bm,bbm}
+\usepackage{picture}
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily,
+  mathescape
+}
+\usepackage{url}
+% https://www.logicmatters.net/resources/ndexamples/proofsty.html
+\usepackage{proof}
+% https://www.ccs.neu.edu/home/wand/csg264/latex/mathpartir/mathpartir.pdf
+\usepackage{mathpartir}
+
+\usepackage{ifthen}
+\newboolean{isHandout}
+\newcommand{\handout}[1]{\ifthenelse{\boolean{isHandout}}{#1}{}\note{#1}}
+\newcommand{\slide}[1]{\ifthenelse{\boolean{isHandout}}{}{#1}}
+
+\newcommand{\subs}[1]{\textsubscript{#1}}
+\newenvironment{proposition}{\begin{fact}}{\end{fact}}
+\renewcommand{\\}{\newline}
+
+\newcommand*{\myit}[1]{\tikz[baseline=(T.base)]{%
+  \node[inner sep=0pt,outer sep=0pt,xslant=0.25](T){#1}}}
+
+\usepackage{stmaryrd}

@@ -1,0 +1,350 @@
+\uselanguage{japanese}
+\languagepath{japanese}
+\deftranslation[to=japanese]{Fact}{Proposition}
+
+\section*{3 Untyped Arithmetic Expressions}
+
+\subsection*{3.1 Introduction}
+
+\begin{frame}[fragile]{Language}
+% \centering
+\begin{lstlisting}
+t $\Coloneqq$ true
+     false
+     if t then t else t
+     0
+     succ t
+     pred t
+     iszero t
+\end{lstlisting}
+\handout{
+Symbol \texttt{t} in the right-hand sides is called a \textit{metavariable}.\\
+It is a place-holder for some particular term.\\
+"Meta" is because it is a variable of the \textit{metalanguage}, not \textit{object language}.\\
+}\slide{
+  \texttt{t} : \textit{metavariable}
+}
+\note{
+  扱う言語の項は図のように表される \\
+  今の所、項と式は同義 \\
+}
+\end{frame}
+
+\begin{frame}[fragile]{Program}
+In the present language, program = term.
+\begin{lstlisting}
+  if false then 0 else 1;
+$\blacktriangleright$ 1
+  iszero (pred (succ 0));
+$\blacktriangleright$ true
+\end{lstlisting}
+\handout{
+The results of evaluations are either boolean constants or numbers.\\
+Such terms are called \textit{values}.\\
+Notice that the syntax can make terms like \texttt{succ true} and \texttt{if 0 then 0 else 0}.
+}\slide{
+Results are boolean constants or numbers, called \textit{values}.\\
+Notice: \texttt{succ true}, \texttt{if 0 then 0 else 0}, \dots are allowed this time.
+}
+\end{frame}
+
+\subsection*{3.2 Syntax}
+
+\begin{frame}{Ways to define terms}
+\begin{itemize}
+  \item Inductively
+  \item Rule Inferred
+  \item Concretely
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Inductive Definition}
+\begin{definition}[3.2.1 Terms, Inductively]
+The set of \textit{terms} is the smallest set $\mathcal{T}$ such that
+\begin{enumerate}
+  \item $\{ \texttt{true, false, 0} \} \subseteq \mathcal{T}$;
+  \item if $\texttt{t\subs{1}} \in \mathcal{T}$, then $\{ \texttt{succ t\subs{1}, pred t\subs{1}, iszero t\subs{1}} \} \subseteq \mathcal{T}$;
+  \item if $\texttt{t\subs{1}} \in \mathcal{T}$, $\texttt{t\subs{2}} \in \mathcal{T}$, and $\texttt{t\subs{3}} \in \mathcal{T}$, then $\texttt{if t\subs{1} then t\subs{2} else t\subs{3}} \in \mathcal{T}$.
+\end{enumerate}
+\end{definition}
+\note{
+1 は T の基本的な項 \\
+2,3 は複合的な式が T に属しているか判定する方法 \\
+"smallest" は T に余分な項が含まれていないことを示す
+}
+\end{frame}
+
+\begin{frame}{Definition by Inference Rules}
+\begin{definition}[3.2.2 Terms, by Inference Rules]
+The set of terms is defined by the following rules:
+\begin{mathpar}
+  \texttt{true} \in \mathcal{T} \and \texttt{false} \in \mathcal{T} \and \texttt{0} \in \mathcal{T} \\
+  \infer{\texttt{succ t\subs{1}} \in \mathcal{T}}{\texttt{t\subs{1}} \in \mathcal{T}} \and
+  \infer{\texttt{pred t\subs{1}} \in \mathcal{T}}{\texttt{t\subs{1}} \in \mathcal{T}} \and
+  \infer{\texttt{iszero t\subs{1}} \in \mathcal{T}}{\texttt{t\subs{1}} \in \mathcal{T}} \\
+  \infer{\texttt{if t\subs{1} then t\subs{2} else t\subs{3}} \in \mathcal{T}}{\texttt{t\subs{1}} \in \mathcal{T} & \texttt{t\subs{2}} \in \mathcal{T} & \texttt{t\subs{3}} \in \mathcal{T}}
+\end{mathpar}
+\end{definition}
+Each rule is called \textit{inference rule}.
+\handout{
+Each rule is read, "If we have established the statements in the premise(s) listed above the line, then we may derive the conclusion below the line."
+\begin{itemize}
+\item Rules with no premises are often called \textit{axioms}.
+\item The term \textit{inference rule} includes both axioms and rules with one or more premises.
+\item Axioms are usually written with no bar.
+\end{itemize}
+}
+\end{frame}
+
+\begin{frame}{Concrete Definition}
+\handout{
+More "concrete" style that gives an explicit procedure for \textit{generating} the elements of $\mathcal{T}$.
+}
+\begin{definition}[3.2.3 Terms, Concretely]
+For each natural number $i$, define a set $\mathcal{S}_i$ as follows:
+\begin{alignat*}{2}
+  \mathcal{S}_0 &= \emptyset \\
+  \mathcal{S}_{i+1} &= & &\{ \texttt{true, false, 0} \}\\
+  &&\cup &\{ \texttt{succ t\subs{1}, pred t\subs{1}, iszero t\subs{1}} \vert \texttt{t\subs{1}} \in \mathcal{S}_i \}\\
+  &&\cup &\{ \texttt{if t\subs{1} then t\subs{2} else t\subs{3}} \vert \texttt{t\subs{1}, t\subs{2}, t\subs{3}} \in \mathcal{S}_i \}\\
+\end{alignat*}
+Finally, let
+$\mathcal{S} = \bigcup_{i} \mathcal{S}_i$.
+\end{definition}
+\end{frame}
+
+\begin{frame}{Ex. 3.2.4 [$\bigstar\bigstar$] How many elements does $\mathcal{S}_3$ have?}
+\pause
+\begin{alignat*}{2}
+  \only<2>{\mathcal{S}_0 &= &&\emptyset \\}
+  \only<2>{\therefore}|\mathcal{S}_0| &= &&0\\
+  \only<2>{\mathcal{S}_{i+1} &= &&\{ \texttt{true, false, 0} \}\\
+  &&\cup &\{ \texttt{succ t\subs{1}, pred t\subs{1}, iszero t\subs{1}} \vert \texttt{t\subs{1}} \in \mathcal{S}_i \}\\
+  &&\cup &\{ \texttt{if t\subs{1} then t\subs{2} else t\subs{3}} \vert \texttt{t\subs{1}, t\subs{2}, t\subs{3}} \in \mathcal{S}_i \}\\}
+  \only<2>{\therefore}|\mathcal{S}_{i+1}| &= &&3 + 3 \times |\mathcal{S}_i| + |\mathcal{S}_i|^3
+\end{alignat*}
+\pause
+\begin{alignat*}{3}
+  |\mathcal{S}_1| &= &&3 + 3 \times 0 + 0^3 && = 3\\
+  |\mathcal{S}_2| &= &&3 + 3 \times 3 + 3^3 && = 39\\
+  |\mathcal{S}_3| &= &&3 + 3 \times 39 + 39^3 && = 59439
+\end{alignat*}
+\end{frame}
+
+
+\begin{frame}{Ex. 3.2.5 [$\bigstar\bigstar$] Show that $\mathcal{S}_i \subseteq \mathcal{S}_{i+1}$}
+\pause
+Prove inductively. Assume that $\texttt{t} \in \mathcal{S}_{i}$.\\
+\begin{itemize}
+  \item If \texttt{t} is either \texttt{true, false, 0}, obvious.
+  \pause
+  \item If \texttt{t} has the form \texttt{succ t\subs{1}}, $\mathtt{t\subs{1}} \in \mathcal{S}_{i-1}$ holds.
+        From induction hypothesis, $\mathtt{t\subs{1}} \in \mathcal{S}_i$.\\
+        Therefore $\texttt{succ t\subs{1}} \in \mathcal{S}_{i+1}$.
+        The same holds for \texttt{pred} and \texttt{iszero}.
+  \pause
+  \item If \texttt{t} has the form \texttt{if t\subs{1} then t\subs{2} else t\subs{3}}, $\mathtt{t\subs{1}, t\subs{2}, t\subs{3}} \in \mathcal{S}_{i-1}$ holds.\\
+        From induction hypothesis, $\mathtt{t\subs{1}, t\subs{2}, t\subs{3}} \in \mathcal{S}_i$.\\
+        Therefore $\texttt{if t\subs{1} then t\subs{2} else t\subs{3}} \in \mathcal{S}_{i+1}$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Two Views Define the Same Set}
+\begin{proposition}[3.2.6]
+  $\mathcal{T} = \mathcal{S}$
+\end{proposition}
+\begin{proof}
+  Read p.28.
+\end{proof}
+\end{frame}
+
+\subsection*{3.3 Induction on Terms}
+
+\begin{frame}{Inductive}
+If $\mathtt{t} \in \mathcal{T}$, then one of three things must be true:
+\begin{enumerate}
+  \item \texttt{t} is a constant.
+  \item \texttt{t} has the form \texttt{succ t\subs{1}, pred t\subs{1}}, or \texttt{iszero t\subs{1}} for some \textit{smaller} term \texttt{t\subs{1}}.
+  \item \texttt{t} has the form \texttt{if t\subs{1} then t\subs{2} else t\subs{3}} for some \textit{smaller} terms \texttt{t\subs{1}, t\subs{2} and t\subs{3}}
+\end{enumerate}
+We can
+\begin{itemize}
+  \item give \textit{inductive definitions} of functions.
+  \item give \textit{inductive proofs} of properties of terms.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Inductive Definitions of Consts(\texttt{t})}
+\begin{definition}[3.3.1]
+\begin{alignat*}{2}
+  &Consts(\texttt{true}) &&= \{\texttt{true}\}\\
+  &Consts(\texttt{false}) &&= \{\texttt{false}\}\\
+  &Consts(\texttt{0}) &&= \{\texttt{0}\}\\
+  &Consts(\texttt{succ t\subs{1}}) &&= Consts(\texttt{t\subs{1}})\\
+  &Consts(\texttt{pred t\subs{1}}) &&= Consts(\texttt{t\subs{1}})\\
+  &Consts(\texttt{iszero t\subs{1}}) &&= Consts(\texttt{t\subs{1}})\\
+  &Consts(\texttt{if t\subs{1} then t\subs{2} else t\subs{3}}) &&= Consts(\texttt{t\subs{1}}) \cup Consts(\texttt{t\subs{2}}) \cup Consts(\texttt{t\subs{3}})
+\end{alignat*}
+\end{definition}
+\end{frame}
+
+\begin{frame}{Inductive Definition of size(\texttt{t})}
+\begin{definition}[3.3.2 size(\texttt{t})]
+\begin{alignat*}{2}
+  &size(\texttt{true}) &&= 1\\
+  &size(\texttt{false}) &&= 1\\
+  &size(\texttt{0}) &&= 1\\
+  &size(\texttt{succ t\subs{1}}) &&= size(\texttt{t\subs{1}}) + 1\\
+  &size(\texttt{pred t\subs{1}}) &&= size(\texttt{t\subs{1}}) + 1\\
+  &size(\texttt{iszero t\subs{1}}) &&= size(\texttt{t\subs{1}}) + 1\\
+  &size(\texttt{if t\subs{1} then t\subs{2} else t\subs{3}}) &&= size(\texttt{t\subs{1}}) + size(\texttt{t\subs{2}}) + size(\texttt{t\subs{3}}) + 1
+\end{alignat*}
+\end{definition}
+\handout{The size of \texttt{t} is the number of nodes in its abstract syntax tree.}
+\end{frame}
+
+\begin{frame}{Inductive Definition of depth(\texttt{t})}
+\begin{definition}[3.3.2 depth(\texttt{t})]
+\begin{alignat*}{2}
+  &depth(\texttt{true}) &&= 1\\
+  &depth(\texttt{false}) &&= 1\\
+  &depth(\texttt{0}) &&= 1\\
+  &depth(\texttt{succ t\subs{1}}) &&= depth(\texttt{t\subs{1}}) + 1\\
+  &depth(\texttt{pred t\subs{1}}) &&= depth(\texttt{t\subs{1}}) + 1\\
+  &depth(\texttt{iszero t\subs{1}}) &&= depth(\texttt{t\subs{1}}) + 1\\
+  &depth(\texttt{if t\subs{1} then t\subs{2} else t\subs{3}}) &&= \max(depth(\texttt{t\subs{1}}), depth(\texttt{t\subs{2}}), depth(\texttt{t\subs{3}})) + 1
+\end{alignat*}
+\end{definition}
+\handout{The depth of \texttt{t} is the smallest $i$ such that $\texttt{t} \in \mathcal{S}_i$.}
+\end{frame}
+
+\begin{frame}{Inductive Proof of a Simple Fact}
+\begin{lemma}[3.3.3]
+$|Consts(\texttt{t})| \le size(\texttt{t})$
+\end{lemma}
+\begin{proof}
+\pause
+\only<2>{
+By induction on the depth of \texttt{t}.\\
+Case: \texttt{t} is a constant\\
+Immediate: $|Consts(\texttt{t})| = |\{\texttt{t}\}| = 1 = size(\texttt{t})$.\\
+Case: \texttt{t} = \texttt{succ t\subs{1}, pred t\subs{1}} or \texttt{iszero t\subs{1}}\\
+By the IH, $|Consts(\texttt{t\subs{1}})| \le size(\texttt{t\subs{1}})$.\\
+$\therefore |Consts(\texttt{t})| = |Consts(\texttt{t\subs{1}})| \le size(\texttt{t\subs{1}}) < |Consts(\texttt{t})|$
+}
+\pause
+\only<3>{
+\small{
+Case: \texttt{t} = \texttt{if t\subs{1} then t\subs{2} else t\subs{3}}\\
+By the IH, $|Consts(\texttt{t\subs{1}})| \le size(\texttt{t\subs{1}})$, $|Consts(\texttt{t\subs{2}})| \le size(\texttt{t\subs{2}})$ and $|Consts(\texttt{t\subs{3}})| \le size(\texttt{t\subs{3}})$.
+\begin{align*}
+  \therefore |Consts(\texttt{t})| &= |Consts(\texttt{t\subs{1}}) \cup Consts(\texttt{t\subs{2}}) \cup Consts(\texttt{t\subs{3}})|\\
+  &\le |Consts(\texttt{t\subs{1}})| + |Consts(\texttt{t\subs{2}})| + |Consts(\texttt{t\subs{3}})|\\
+  &\le size(\texttt{t\subs{1}}) + size(\texttt{t\subs{2}}) + size(\texttt{t\subs{3}})\\
+  &< size(\texttt{t}). \qedhere
+\end{align*}
+}
+}
+\end{proof}
+\end{frame}
+
+\begin{frame}{Thress Inductions on Terms}
+\begin{theorem}[3.3.4 Principles of Induction on Terms]
+  Induction on depth:\\
+  \quad $\forall \texttt{s} \in \mathcal{T},
+  (\forall \texttt{r}\in\mathcal{T} ~s.t.~ depth(\texttt{r}) < depth(\texttt{s}), P(\texttt{r}) \rightarrow P(\texttt{s}))
+  \\\qquad\rightarrow \forall \texttt{s} \in \mathcal{T}, P(\texttt{s})$.\\
+  Induction on size:\\
+  \quad $\forall \texttt{s} \in \mathcal{T},
+  (\forall \texttt{r}\in\mathcal{T} ~s.t.~ size(\texttt{r}) < size(\texttt{s}), P(\texttt{r}) \rightarrow P(\texttt{s}))
+  \\\qquad\rightarrow \forall \texttt{s} \in \mathcal{T}, P(\texttt{s})$.\\
+  Structural induction (\myit{構造的帰納法}):\\
+  \quad $\forall \texttt{s} \in \mathcal{T},
+  (\forall \texttt{r}\in\mathcal{T} ~s.t.~ \text{\texttt{r} is a immediate subterm of \texttt{s}}, P(\texttt{r}) \rightarrow P(\texttt{s}))
+  \\\qquad \rightarrow \forall \texttt{s} \in \mathcal{T}, P(\texttt{s})$.\\
+\end{theorem}
+\end{frame}
+
+\begin{frame}{Proof: Exercise ($\bigstar\bigstar$)}
+\pause
+Maybe use the concrete definition and induction on natural numbers......
+\begin{alignat*}{2}
+  \mathcal{S}_0 &= \emptyset \\
+  \mathcal{S}_{i+1} &= & &\{ \texttt{true, false, 0} \}\\
+  &&\cup &\{ \texttt{succ t\subs{1}, pred t\subs{1}, iszero t\subs{1}} \vert \texttt{t\subs{1}} \in \mathcal{S}_i \}\\
+  &&\cup &\{ \texttt{if t\subs{1} then t\subs{2} else t\subs{3}} \vert \texttt{t\subs{1}, t\subs{2}, t\subs{3}} \in \mathcal{S}_i \}\\
+\end{alignat*}
+\vspace*{-3em}
+\begin{align*}
+  &\text{let} ~\mathcal{P}_i = (\forall \texttt{s}\in\mathcal{S}_{i},
+    (\forall \texttt{r}\in\mathcal{S}_{i} ~s.t.~ depth(\texttt{r}) < depth(\texttt{s}), P(\texttt{r}) \rightarrow P(\texttt{s}))\\
+  &\qquad\qquad\rightarrow \forall \texttt{s}\in\mathcal{S}_i, P(\texttt{s})).\\
+  &\mathcal{P}_0 \land \left(\forall i \in \mathbb{N}, \mathcal{P}_{i} \rightarrow \mathcal{P}_{i+1}\right) \rightarrow \forall i \in \mathbb{N}, \mathcal{P}_{i}. ~(\text{induction on natural numbers})
+\end{align*}
+\end{frame}
+
+\begin{frame}{Power of Structural Induction}
+Structural induction is often easier than other inductions.
+\begin{proof}[Structural Induction]
+By induction on \texttt{t}.\\
+Case: \texttt{t = true}\\
+\dots show $P(\texttt{true})$ \dots\\
+Case: \texttt{t = succ t\subs{1}}\\
+\dots show $P(\texttt{succ t\subs{1}})$ using $P(\texttt{t\subs{1}})$ \dots\\
+Case: \texttt{t = if t\subs{1} then t\subs{2} else t\subs{3}}\\
+\dots show $P(\texttt{if t\subs{1} then t\subs{2} else t\subs{3}})$ using $P(t\subs{1}), P(t\subs{2}), P(t\subs{3})$ \dots\\
+\end{proof}
+\end{frame}
+
+\subsection*{3.4 Semantic Styles}
+
+\begin{frame}{In the First Place...}
+Two elements that characterize programming languages:
+\begin{itemize}
+  \item Syntax (構文)
+  \item Semantics (意味論)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Three Semantic Styles}
+\begin{itemize}
+  \item Operational semantics (操作的意味論)
+  \item Denotational semantics (表示的意味論)
+  \item Axiomatic semantics (公理的意味論)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Operational Semantics}
+Define an \textit{abstract machine} and specify the behavior.
+\begin{block}{Example}
+\begin{mathpar}
+\texttt{if true then t\subs{2} else t\subs{3}} \Rightarrow \texttt{t\subs{2}} \and
+\texttt{if false then t\subs{2} else t\subs{3}} \Rightarrow \texttt{t\subs{3}} \and
+\infer{\texttt{if t\subs{1} then t\subs{2} else t\subs{3}} \Rightarrow \texttt{if t${}_1^\prime$ then t\subs{2} else t\subs{3}}}{\texttt{t\subs{1}} \rightarrow \texttt{t}_1^\prime}
+\end{mathpar}
+\end{block}
+We usually use this!
+\end{frame}
+
+\begin{frame}{Denotational Semantics}
+The meaning of a term is taken to be some mathematical object.
+\begin{block}{Example}
+\begin{mathpar}
+\llbracket 0 \rrbracket = 0 \and \llbracket \texttt{succ t} \rrbracket = \llbracket t \rrbracket + 1 \and \llbracket \texttt{pred t} \rrbracket = \llbracket t \rrbracket - 1
+\end{mathpar}
+\end{block}
+\end{frame}
+
+\begin{frame}{Axiomatic Semantics}
+One concrete example is Hoare logic.
+\begin{block}{Hoare Triple}
+$$\{P\}~C~\{Q\}$$ where
+\begin{itemize}
+  \item $P$ is a precondition
+  \item $C$ is a program
+  \item $Q$ is a postcondition
+\end{itemize}
+If $P$ holds and $C$ executes, then $Q$ holds.\\
+Ex. $\{x=1, y=1\}~z:=x+y~\{x=1, y=1, z=2\}$
+\end{block}
+\end{frame}

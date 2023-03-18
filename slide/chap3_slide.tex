@@ -1,0 +1,58 @@
+\documentclass[%
+  unicode,
+  dvipdfmx,
+  mathserif,
+  % notheorems,
+  m, % vertical position of text: (t,m,b)
+  % handout,
+  aspectratio=169,
+  12pt,
+  % compress,
+  % unknownkeysallowed
+]{beamer}
+
+\input{preamble.tex}
+
+\setboolean{isHandout}{false}
+\usepackage{bxdpx-beamer}
+\usepackage{pxjahyper}
+\usepackage{fancybox}
+\usefonttheme{professionalfonts}
+
+% https://ftp.jaist.ac.jp/pub/CTAN/macros/latex/contrib/beamer-contrib/themes/metropolis/doc/metropolistheme.pdf
+\usetheme{metropolis}
+\metroset{
+  sectionpage = progressbar,  % none, simple, progressbar
+  subsectionpage = progressbar,  % none, simple, progressbar
+  numbering = fraction,  % none, counter, fraction
+  progressbar = none,  % none, head, frametitle, foot
+  block = fill,  % transparent, fill .
+}
+
+\makeatletter
+\def\beamer@framenotesbegin{% at beginning of slide
+\usebeamercolor[fg]{normal text}
+\gdef\beamer@noteitems{}%
+\gdef\beamer@notes{}%
+}
+\makeatother
+
+\definecolor{royalblue}{rgb}{0.255, 0.412, 0.882}
+\setbeamercolor{frametitle}{fg=white, bg=royalblue}
+\definecolor{aliceblue}{rgb}{0.94, 0.97, 1.0}
+\setbeamercolor{normal text}{fg=black, bg=aliceblue}
+\setbeamercolor{alerted text}{fg=black}
+\setbeamercolor{example text}{fg=black}
+
+% \usepackage{pgfpages}
+% % \setbeameroption{hide notes} % スライドのみ作成
+% % \setbeameroption{show only notes} % 発表ノートのみ作成
+% \setbeameroption{show notes on second screen=right} % スライドと発表ノートを横並びに作成
+% \setbeamertemplate{note page}{\pagecolor{gray!10}\insertnote}
+
+\input{chap3_title.tex}
+
+\begin{document}
+\maketitle
+\input{chap3.tex}
+\end{document}

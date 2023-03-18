@@ -1,0 +1,83 @@
+% \documentclass[unicode,dvipdfmx,8pt,notheorems]{beamer}
+\documentclass[%
+  unicode,
+  dvipdfmx,
+  mathserif,
+  % notheorems,
+  m, % vertical position of text: (t,m,b)
+  % handout, % for printing slides
+  aspectratio=169,
+  10pt,
+  % compress,
+  % unknownkeysallowed
+  % notes,
+]{beamer}
+
+% \usepackage{pgfpages}
+% % \setbeameroption{hide notes} % スライドのみ作成
+% % \setbeameroption{show only notes} % 発表ノートのみ作成
+% \setbeameroption{show notes on second screen=right} % スライドと発表ノートを横並びに作成
+% \setbeamertemplate{note page}{\pagecolor{gray!10}\insertnote}  % 発表ノートの設定 (ナビゲーションは非表示)
+
+\usepackage{bxdpx-beamer}
+\usepackage{pxjahyper}
+\usepackage{minijs}
+\usepackage{mathrsfs}
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{color}
+\usepackage{graphics}
+\usepackage{tikz}
+\usepackage{bm,bbm}
+\usepackage{picture}
+\usepackage{fancybox}
+
+\usefonttheme{professionalfonts} % 数式フォントをいつも通り (?) にする %
+
+\usetheme{metropolis}
+\metroset{
+  sectionpage = progressbar,  % none, simple, progressbar
+  subsectionpage = none,  % none, simple, progressbar
+  numbering = fraction,  % none, counter, fraction
+  progressbar = none,  % none, head, frametitle, foot
+  block = fill,  % transparent, fill .
+}
+
+\definecolor{royalblue}{rgb}{0.255, 0.412, 0.882}
+\setbeamercolor{title}{bg=royalblue}
+\setbeamercolor{frametitle}{bg=royalblue}
+\definecolor{aliceblue}{rgb}{0.94, 0.97, 1.0}
+\setbeamercolor{normal text}{fg=black, bg=aliceblue}
+\setbeamercolor{alerted text}{fg=black}
+\setbeamercolor{example text}{fg=black}
+
+\title{ 題名 }
+\subtitle{ 副題 }
+\author{ 名前 }
+\institute{ 所属ゼミ }
+\date{\today}
+
+\begin{document}
+\maketitle
+\section*{Sec1}
+\begin{frame}{first frame}
+\begin{theorem}
+  素数は無限に存在する．
+\end{theorem}
+\begin{proof}
+  \begin{enumerate}
+    \item<1-> $p_1, \dots, p_n$ がすべての素数だと仮定する。
+    \item<2-> $q:=p_1\dots p_n + 1$ とおく。
+    \item<3-> すると $q$ はどの $p_1,\dots,p_n$ でも割り切れない。
+    \item<4-> したがって，$q$は新たな素数を約数にもつことになって矛盾する。\qedhere
+  \end{enumerate}
+\end{proof}
+\uncover<5->{証明は\alert{背理法}を使った．}
+\note{ここに発表者ノートを書く}
+\end{frame}
+\section*{Sec2}
+\begin{frame}{second frame}
+\begin{block}{Title}
+  これはブロックです
+\end{block}
+\end{frame}
+\end{document}

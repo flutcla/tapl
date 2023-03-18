@@ -1,0 +1,18 @@
+\frametitle{language}
+\centering
+\begin{lstlisting}
+t $\Coloneqq$ true
+     false
+     if t then t else t
+     0
+     succ t
+     pred t
+     iszero t
+\end{lstlisting}
+Symbol \texttt{t} in the right-hand sides is called a \textit{metavariable}.\\
+It is a place-holder for some particular term.\\
+"Meta" is because it is a variable of the \textit{metalanguage}, not \textit{object language}.
+\note{
+  扱う言語の項は図のように表される \\
+  今の所、項と式は同義 \\
+}
